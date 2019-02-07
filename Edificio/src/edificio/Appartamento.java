@@ -92,6 +92,11 @@ public class Appartamento {
     	return supDispN;
     }
     
+    public void inizializza(Stanza Vuota) {
+    for(int i=0;i<6;i++){
+    	Stanze[i]=Vuota;
+    }
+    }
     
     
     public void chiediDatiAppartamento() {
@@ -110,11 +115,11 @@ public class Appartamento {
           
     }
     
-    public void addStanza(Stanza st) {
+    public void addStanza(Stanza st, Stanza Vuota) {
     
     	int var=0;
-        for (int i=0; i<7; i++) {
-            if (Stanze[i]==null){
+        for (int i=0; i<6; i++) {
+            if (Stanze[i]==Vuota){
             	if (var==0) {
             		Stanze[i]=st;
             		System.out.println("Stanza aggiunta:"+Stanze[i]);
@@ -124,7 +129,7 @@ public class Appartamento {
             		this.setSupDispN(this.getSupDispN() + Stanze[i].supDisperdenteNetta());
             		var++;
             	}
-                else break;
+                else i=5;
             }
         }
      }
