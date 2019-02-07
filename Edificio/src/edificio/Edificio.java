@@ -49,13 +49,17 @@ public class Edificio {
     int disperdenteLorda=0;
     int disperdenteNetta=0;
     
+    Stanza Vuota= new Stanza("v", 0, 0, 0, 0, false, false);
+    
     Stanza A= new Stanza("Stanza1", 30, 10, 10, 10, false, false);
     Stanza B= new Stanza("Stanza2", 20, 10, 10, 10, false, false);
 
     Appartamento a1= new Appartamento(1,1,1,7,0,0,0,0);
     
-    a1.addStanza(A);
-    a1.addStanza(B);
+    a1.inizializza(Vuota);
+    
+    a1.addStanza(A,Vuota);
+    a1.addStanza(B,Vuota);
     
     
     for (int i=0; i<1; i++) {
