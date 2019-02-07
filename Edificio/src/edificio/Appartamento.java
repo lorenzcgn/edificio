@@ -110,23 +110,25 @@ public class Appartamento {
           
     }
     
-    int var=0;
-    
     public void addStanza(Stanza st) {
-    	do {
+    
+    	int var=0;
         for (int i=0; i<7; i++) {
             if (Stanze[i]==null){
-                Stanze[i]=st;
-                System.out.println("Stanza aggiunta:"+Stanze[i]);
-                this.setVol(this.getVol() + Stanze[i].calcolaVolume());
-                this.setSup(this.getSup() + Stanze[i].calcolaSupTot());
-                this.setSupDisp(this.getSupDisp() + Stanze[i].supDisperdenteLorda());
-                this.setSupDispN(this.getSupDispN() + Stanze[i].supDisperdenteNetta());
-                var++;
+            	if (var==0) {
+            		Stanze[i]=st;
+            		System.out.println("Stanza aggiunta:"+Stanze[i]);
+            		this.setVol(this.getVol() + Stanze[i].calcolaVolume());
+            		this.setSup(this.getSup() + Stanze[i].calcolaSupTot());
+            		this.setSupDisp(this.getSupDisp() + Stanze[i].supDisperdenteLorda());
+            		this.setSupDispN(this.getSupDispN() + Stanze[i].supDisperdenteNetta());
+            		var++;
+            	}
+                else break;
             }
         }
-    	}while(var<0);
-    }
+     }
+    	
    
     
     /* Metodo per chiedere in input i dati (al momento inusato) */
