@@ -17,9 +17,9 @@ public class Appartamento {
     Stanza Stanze[];
             
     public Appartamento(int numPiano, int numProp, int numInterno, int numeroStanze, int vol, int sup, int supDisp, int supDispN) {
-	this.numPiano = numPiano;
-	this.numProp = numProp;
-	this.numInterno = numInterno;
+    this.numPiano = numPiano;
+    this.numProp = numProp;
+    this.numInterno = numInterno;
     this.numeroStanze = numeroStanze;
     this.vol=vol;
     this.sup=sup;
@@ -115,7 +115,8 @@ public class Appartamento {
             if (Stanze[i]==null){
             	if (var==0) {
             		Stanze[i]=st;
-            		System.out.println("Stanza aggiunta:"+Stanze[i].getNome());
+                        System.out.println("");
+            		System.out.println("Stanza aggiunta: "+Stanze[i].getNome()+" al piano "+getNumPiano());
             		this.setVol(this.getVol() + Stanze[i].calcolaVolume());
             		this.setSup(this.getSup() + Stanze[i].calcolaSupTot());
             		this.setSupDisp(this.getSupDisp() + Stanze[i].supDisperdenteLorda());
