@@ -1,4 +1,3 @@
-
 package edificio;
 import java.util.*;
 
@@ -14,6 +13,8 @@ public class Stanza {
     private boolean confinaRisc;
     private boolean cucina;
 
+    
+    
     public Stanza(String nome, int lun, int lar, int alt, int supFin, boolean confinaRisc, boolean cucina) {
     this.nome = nome;
     this.lun = lun;
@@ -22,6 +23,16 @@ public class Stanza {
     this.supFin = supFin;
     this.confinaRisc = confinaRisc;
     this.cucina = cucina;
+    }
+
+    Stanza(Stanza Vuota) {
+        this.nome="Vuota";
+        this.lun=0;
+        this.lar=0;
+        this.alt=0;
+        this.supFin=0;
+        this.confinaRisc=false;
+        this.cucina=false;
     }
 
     public int getAlt() {
@@ -82,26 +93,28 @@ public class Stanza {
     }
     
     public int calcolaVolume() {
-        /* System.out.println("Il volume della stanza e': "+(this.lun*this.lar*this.alt)); */
+        System.out.println("Il volume della stanza "+nome+" e': "+(this.lun*this.lar*this.alt));
         int volume=this.lun*this.lar*this.alt;
-        System.out.println("hey man"+volume);
         return volume;
     }
     
     public int calcolaSupTot() {
-        /* System.out.println("La superficie totale della stanza e': "+(2*(lun*lar)+2*(alt*lun)+2*(alt*lar))); */
+        System.out.println("La superficie totale della stanza "+nome+" e': "+(2*(lun*lar)+2*(alt*lun)+2*(alt*lar)));
         int suptot=2*(lun*lar)+2*(alt*lun)+2*(alt*lar);
         return suptot;
     }
     public int supDisperdenteLorda() {
         int supdisp;
         if (this.isConfinaRisc()==true) {
-            /*System.out.println("La superficie disperdente lorda della stanza e': "+(2*(lun*lar)+2*(alt*lun)+2*(alt*lar)));  */
+            System.out.println("La superficie disperdente lorda della stanza "+nome+" e': "+(2*(lun*lar)+2*(alt*lun)+2*(alt*lar)));
             supdisp=2*(lun*lar)+2*(alt*lun)+2*(alt*lar);
             return supdisp;
 
         }
-        else /*System.out.println("La superficie disperdente lorda della stanza e' 0");*/ supdisp=0;
+        else {
+            System.out.println("La superficie disperdente lorda della stanza "+nome+" e' 0");
+            supdisp=0;
+        }
                     return supdisp;
 
     }
