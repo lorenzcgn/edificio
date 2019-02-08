@@ -8,9 +8,7 @@ import java.util.*;
  */
 public class Edificio {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
     int numeroPiani=7;
     
@@ -18,28 +16,30 @@ public class Edificio {
     
     /* Chiedo il numero dei piani */
     
-    /* System.out.println("Il numero di piani massimo dell'edificio (un piano corrisponde ad un appartamento) per ora e': ");
+    System.out.println("Inserisci il numero di piani massimo dell'edificio (un piano corrisponde ad un appartamento): ");
     do{
         numeroPiani=s.nextInt();
-    }while(numeroPiani<1); */   
+    }while(numeroPiani<1);    
     
     /* Array di oggetti */
     
     Appartamento Appartamenti[]= new Appartamento[numeroPiani];
-    /* Proprietario Proprietari[]= new Proprietario[numeroPiani]; */
+    Proprietario Proprietari[]= new Proprietario[numeroPiani];
 
     
     /* Chiedo i dati del proprietario e degli appartamenti */
     
     for (int i=0; i<numeroPiani; i++) {
         Appartamenti[i]= new Appartamento(0,0,0,7,0,0,0,0);
-        /* Proprietari[i]= new Proprietario("","",""); */
+        Proprietari[i]= new Proprietario("","","");
     }
     
+    Appartamento a1 = new Appartamento(1,1,1,7,0,0,0,0);
+    Appartamento a2 = new Appartamento(1,1,1,7,0,0,0,0);
+    
     for (int i=0; i<numeroPiani; i++) {
-        /* Appartamenti[i].chiediDatiAppartamento(); */
-        /* Appartamenti[i].chiediDatiStanze(); */
-        /* Proprietari[i].chiediDatiProp(); */
+        Appartamenti[i].chiediDatiAppartamento();
+        Proprietari[i].chiediDatiProp();
     }
     
     int volumi=0;
@@ -50,9 +50,6 @@ public class Edificio {
     Stanza A = new Stanza("Stanza1", 30, 10, 10, 10, true, false);
     Stanza B = new Stanza("Stanza2", 20, 10, 10, 10, true, false);
 
-    Appartamento a1 = new Appartamento(1,1,1,7,0,0,0,0);
-    Appartamento a2 = new Appartamento(1,1,1,7,0,0,0,0);
-    
     a1.addStanza(A);
     a1.addStanza(B);
     
@@ -68,14 +65,12 @@ public class Edificio {
     }
     
     System.out.println(
+                "\n"+
     		"Volumi totali: "+volumi+"\n"+
     		"Superfici totali: "+superfici+"\n"+
     		"Superfici disperdenti lorde: "+disperdenteLorda+"\n"+
     		"Superfici disperdenti nette: "+disperdenteNetta
     );
-    
-    
-    
     
 
 }}
