@@ -15,6 +15,7 @@ public class Appartamento {
     private int supDispN;
     
     Stanza Stanze[];
+    Proprietario Proprietari[];
             
     public Appartamento(int numPiano, int numProp, int numInterno, int numeroStanze, int vol, int sup, int supDisp, int supDispN) {
     this.numPiano = numPiano;
@@ -26,6 +27,7 @@ public class Appartamento {
     this.supDisp=supDisp;
     this.supDispN=supDispN;
     Stanze = new Stanza[numeroStanze];
+    Proprietari = new Proprietario[numProp];
 	}
 
     public int getNumPiano() {
@@ -91,9 +93,44 @@ public class Appartamento {
     public int getSupDispN() {
     	return supDispN;
     }
+        
+    Proprietario P1=new Proprietario("","","");
+    Proprietario P2=new Proprietario("","","");  
     
-    public void chiediDatiAppartamento() {
-	  System.out.println("Inserisci il numero del piano:");
+    
+    public void settaProprietari(int numProp) {
+        for (int i=0; i<numProp; i++) {
+            Proprietari[0]=P1;
+            Proprietari[1]=P2;
+            Proprietari[i].chiediDatiProp();
+        }
+        
+    
+    }
+    
+    public void addStanza(Stanza st) {
+    
+    	int var=0;
+        for (int i=0; i<6; i++) {
+            if (Stanze[i]==null){
+            	if (var==0) {
+            		Stanze[i]=st;
+                        System.out.println("");
+            		System.out.println("Stanza aggiunta: "+Stanze[i].getNome()+" al piano "+getNumPiano()+", con numero interno: "+getNumInterno());
+            		this.setVol(this.getVol() + Stanze[i].calcolaVolume());
+            		this.setSup(this.getSup() + Stanze[i].calcolaSupTot());
+            		this.setSupDisp(this.getSupDisp() + Stanze[i].supDisperdenteLorda());
+            		this.setSupDispN(this.getSupDispN() + Stanze[i].supDisperdenteNetta());
+            		var++;
+            	}
+                else i=5;
+            }
+        }
+     }
+    
+    
+    public void chiediDatiAppartamenti (){
+        System.out.println("Inserisci il numero del piano:");
 	  do{
 		  this.setNumPiano(s.nextInt());
 	  }while(this.numPiano<1);
@@ -105,28 +142,8 @@ public class Appartamento {
 	  do {
 		  this.setNumInterno(s.nextInt());
           }while(this.numInterno<1);
-          
+        System.out.println("Ok, i dati di questo appartamento sono finiti"+"\n");
     }
-    
-    public void addStanza(Stanza st) {
-    
-    	int var=0;
-        for (int i=0; i<6; i++) {
-            if (Stanze[i]==null){
-            	if (var==0) {
-            		Stanze[i]=st;
-                        System.out.println("");
-            		System.out.println("Stanza aggiunta: "+Stanze[i].getNome()+" al piano "+getNumPiano());
-            		this.setVol(this.getVol() + Stanze[i].calcolaVolume());
-            		this.setSup(this.getSup() + Stanze[i].calcolaSupTot());
-            		this.setSupDisp(this.getSupDisp() + Stanze[i].supDisperdenteLorda());
-            		this.setSupDispN(this.getSupDispN() + Stanze[i].supDisperdenteNetta());
-            		var++;
-            	}
-                else i=5;
-            }
-        }
-     }
     	
    
     
