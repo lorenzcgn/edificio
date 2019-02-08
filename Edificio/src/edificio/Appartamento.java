@@ -1,4 +1,3 @@
-
 package edificio;
 import java.util.*;
 
@@ -15,7 +14,7 @@ public class Appartamento {
     private int supDisp;
     private int supDispN;
     
-    Stanza Stanze[]=new Stanza[numeroStanze];
+    Stanza Stanze[];
             
     public Appartamento(int numPiano, int numProp, int numInterno, int numeroStanze, int vol, int sup, int supDisp, int supDispN) {
 	this.numPiano = numPiano;
@@ -26,6 +25,7 @@ public class Appartamento {
     this.sup=sup;
     this.supDisp=supDisp;
     this.supDispN=supDispN;
+    Stanze = new Stanza[numeroStanze];
 	}
 
     public int getNumPiano() {
@@ -92,13 +92,6 @@ public class Appartamento {
     	return supDispN;
     }
     
-    public void inizializza(Stanza Vuota) {
-    for(int i=0;i<6;i++){
-    	Stanze[i]=Vuota;
-    }
-    }
-    
-    
     public void chiediDatiAppartamento() {
 	  System.out.println("Inserisci il numero del piano:");
 	  do{
@@ -115,14 +108,14 @@ public class Appartamento {
           
     }
     
-    public void addStanza(Stanza st, Stanza Vuota) {
+    public void addStanza(Stanza st) {
     
     	int var=0;
         for (int i=0; i<6; i++) {
-            if (Stanze[i]==Vuota){
+            if (Stanze[i]==null){
             	if (var==0) {
             		Stanze[i]=st;
-            		System.out.println("Stanza aggiunta:"+Stanze[i]);
+            		System.out.println("Stanza aggiunta:"+Stanze[i].getNome());
             		this.setVol(this.getVol() + Stanze[i].calcolaVolume());
             		this.setSup(this.getSup() + Stanze[i].calcolaSupTot());
             		this.setSupDisp(this.getSupDisp() + Stanze[i].supDisperdenteLorda());
