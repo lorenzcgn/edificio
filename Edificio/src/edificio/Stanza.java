@@ -25,16 +25,6 @@ public class Stanza {
     this.cucina = cucina;
     }
 
-    Stanza(Stanza Vuota) {
-        this.nome="Vuota";
-        this.lun=0;
-        this.lar=0;
-        this.alt=0;
-        this.supFin=0;
-        this.confinaRisc=false;
-        this.cucina=false;
-    }
-
     public int getAlt() {
         return alt;
     }
