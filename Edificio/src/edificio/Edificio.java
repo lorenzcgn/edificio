@@ -1,4 +1,3 @@
-
 package edificio;
 import java.util.*;
 
@@ -13,17 +12,16 @@ public class Edificio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    int numeroPiani;
+    int numeroPiani=7;
     
     Scanner s = new Scanner(System.in);
     
     /* Chiedo il numero dei piani */
     
-    System.out.println("Inserisci il numero di piani dell'edificio (un piano corrisponde ad un appartamento)");
+    /* System.out.println("Il numero di piani massimo dell'edificio (un piano corrisponde ad un appartamento) per ora e': ");
     do{
         numeroPiani=s.nextInt();
-    }while(numeroPiani<1);
-   
+    }while(numeroPiani<1); */   
     
     /* Array di oggetti */
     
@@ -48,18 +46,18 @@ public class Edificio {
     int superfici=0;
     int disperdenteLorda=0;
     int disperdenteNetta=0;
-    
-    Stanza Vuota= new Stanza("v", 0, 0, 0, 0, false, false);
-    
-    Stanza A= new Stanza("Stanza1", 30, 10, 10, 10, false, false);
-    Stanza B= new Stanza("Stanza2", 20, 10, 10, 10, false, false);
+       
+    Stanza A = new Stanza("Stanza1", 30, 10, 10, 10, true, false);
+    Stanza B = new Stanza("Stanza2", 20, 10, 10, 10, true, false);
 
-    Appartamento a1= new Appartamento(1,1,1,7,0,0,0,0);
+    Appartamento a1 = new Appartamento(1,1,1,7,0,0,0,0);
+    Appartamento a2 = new Appartamento(1,1,1,7,0,0,0,0);
     
-    a1.inizializza(Vuota);
+    a1.addStanza(A);
+    a1.addStanza(B);
     
-    a1.addStanza(A,Vuota);
-    a1.addStanza(B,Vuota);
+    a2.addStanza(A);
+    a2.addStanza(B);
     
     
     for (int i=0; i<1; i++) {
