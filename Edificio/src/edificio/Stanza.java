@@ -10,18 +10,26 @@ public class Stanza {
     private int lar;
     private int alt;
     private int supFin;
-    private boolean confinaRisc;
     private boolean cucina;
-
+    private boolean est;
+    private boolean ovest;
+    private boolean soffitto;
+    private boolean pavimento;
+    private boolean nord;
+    private boolean sud;    
     
-    
-    public Stanza(String nome, int lun, int lar, int alt, int supFin, boolean confinaRisc, boolean cucina) {
+    public Stanza(String nome, int lun, int lar, int alt, int supFin, boolean nord, boolean sud, boolean est, boolean ovest, boolean pavimento, boolean soffitto, boolean cucina) {
     this.nome = nome;
     this.lun = lun;
     this.lar = lar;
     this.alt = alt;
     this.supFin = supFin;
-    this.confinaRisc = confinaRisc;
+    this.est=est;
+    this.ovest=ovest;
+    this.nord=nord;
+    this.sud=sud;
+    this.pavimento=pavimento;
+    this.soffitto=soffitto;
     this.cucina = cucina;
     }
 
@@ -65,14 +73,6 @@ public class Stanza {
     public void setSupFin(int supFin) {
         this.supFin = supFin;
     }
-
-    public boolean isConfinaRisc() {
-        return confinaRisc;
-    }
-
-    public void setConfinaRisc(boolean confinaRisc) {
-        this.confinaRisc = confinaRisc;
-    }
     
     public boolean isCucina() {
     	return cucina;
@@ -82,7 +82,71 @@ public class Stanza {
     	this.cucina=cucina;
     }
     
-    public int calcolaVolume() {
+    public boolean isEst() {
+		return est;
+	}
+
+	public void setEst(boolean est) {
+		this.est = est;
+	}
+
+	public boolean isOvest() {
+		return ovest;
+	}
+
+	public void setOvest(boolean ovest) {
+		this.ovest = ovest;
+	}
+
+	public boolean isSoffitto() {
+		return soffitto;
+	}
+
+	public void setSoffitto(boolean soffitto) {
+		this.soffitto = soffitto;
+	}
+
+	public boolean isPavimento() {
+		return pavimento;
+	}
+
+	public void setPavimento(boolean pavimento) {
+		this.pavimento = pavimento;
+	}
+
+	public boolean isNord() {
+		return nord;
+	}
+
+	public void setNord(boolean nord) {
+		this.nord = nord;
+	}
+
+	public boolean isSud() {
+		return sud;
+	}
+
+	public void setSud(boolean sud) {
+		this.sud = sud;
+	}
+	
+	/* Secondo il mio programma la parete nord è altezza x larghezza */
+	int pNord = this.getAlt()*this.getLar();
+	
+	/* Secondo il mio programma la parete sud è altezza x larghezza */
+	int pSud = this.getAlt()*this.getLar();
+
+	/* Secondo il mio programma la parete est è altezza x lunghezza */
+	int pEst = this.getAlt()*this.getLun();
+
+	/* Secondo il mio programma la parete ovest è altezza x lunghezza */
+	int pOvest = this.getAlt()*this.getLun();
+
+	int pPavimento = this.getLar()*this.getLun();
+	int pSoffitto = this.getLar()*this.getLun();
+
+
+	public int calcolaVolume() {
         System.out.println("Il volume della stanza "+nome+" e': "+(this.lun*this.lar*this.alt));
         int volume=this.lun*this.lar*this.alt;
         return volume;
