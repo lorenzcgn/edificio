@@ -1,6 +1,5 @@
 package edificio;
 import java.util.*;
-import java.lang.*;
 
 
 /**
@@ -14,16 +13,14 @@ public class Edificio {
     int numeroPiani=7;
     int numProp[];
     numProp = new int[14];
-
-    
-    Scanner s = new Scanner(System.in);
+    Scanner s= new Scanner(System.in);
     
     /* Chiedo il numero dei piani */
     
     System.out.println("Inserisci il numero di piani (un piano corrisponde ad un appartamento): ");
     do{
         numeroPiani=s.nextInt();
-    }while(numeroPiani<1);
+    }while(numeroPiani<1 || numeroPiani>2);
     
     
     /* Array di oggetti */
@@ -32,7 +29,7 @@ public class Edificio {
     
     
     for (int i=0;i<numeroPiani;i++) {
-    System.out.println("Inserisci il numero dei proprietari (max 2) degli appartamenti: ");
+    System.out.println("Inserisci il numero dei proprietari (max 2) di ogni appartamento a partire dal primo: ");
     do{
         numProp[i]=s.nextInt();
     }while(numProp[i]<1 || numProp[i]>2);
@@ -40,7 +37,7 @@ public class Edificio {
     
     }
     
-    /* Chiedo i dati del proprietario e instanzio gli appartamenti */
+    /* Chiedo i dati del proprietario e istanzio gli appartamenti */
     
     for (int i=0; i<numeroPiani; i++) {
         Appartamenti[i]= new Appartamento(0,0,0,7,0,0,0,0);
@@ -57,6 +54,8 @@ public class Edificio {
     a1.settaProprietari(numProp[0]);
     a2.settaProprietari(numProp[1]);
        
+    /* Creo le stanze e le aggiungo agli appartamenti */
+    
     Stanza A = new Stanza("Stanza1", 30, 10, 10, 10, true, false);
     Stanza B = new Stanza("Stanza2", 20, 10, 10, 10, true, false);
 
@@ -66,6 +65,7 @@ public class Edificio {
     a2.addStanza(A);
     a2.addStanza(B);
     
+    /* Calcoli totali dell'edificio */
     
     for (int i=0; i<1; i++) {
             volumi+=a1.getVol()+a2.getVol();
@@ -88,7 +88,9 @@ public class Edificio {
     scelta=s.next();
     if (scelta.equals("SI")){
         System.out.println("L'appartamento al piano "+a1.getNumPiano()+", con "+ a1.getNumeroStanze()+" stanze, il cui numero interno e' "+a1.getNumInterno()+" ha "+a1.getNumProp()+"\n"+
-                " proprietari: "+a1.P1.getNome());
+                " proprietari: "+a1.P1.getNome()+" "+a1.P1.getCognome()+", con codice fiscale: "+a1.P1.getCf());
+        System.out.println("L'appartamento al piano "+a2.getNumPiano()+", con "+ a2.getNumeroStanze()+" stanze, il cui numero interno e' "+a1.getNumInterno()+" ha "+a1.getNumProp()+"\n"+
+                " proprietari: "+a2.P1.getNome()+" "+a2.P1.getCognome()+", con codice fiscale: "+a2.P1.getCf());
     }
     else System.out.println("Ok, grazie per aver usato questo programma");
     

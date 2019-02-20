@@ -95,13 +95,14 @@ public class Appartamento {
     }
         
     Proprietario P1=new Proprietario("","","");
-    Proprietario P2=new Proprietario("","","");  
+    Proprietario P2=new Proprietario("","","");
     
     
     public void settaProprietari(int numProp) {
         for (int i=0; i<numProp; i++) {
-            Proprietari[0]=P1;
-            Proprietari[1]=P2;
+            Proprietari[i]=P1;
+        }
+        for (int i=0; i<numProp; i++) {
             Proprietari[i].chiediDatiProp();
         }
         
