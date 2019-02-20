@@ -54,10 +54,15 @@ public class Edificio {
     a1.settaProprietari(numProp[0]);
     a2.settaProprietari(numProp[1]);
        
-    /* Creo le stanze e le aggiungo agli appartamenti */
+    /* Creo le stanze e le aggiungo agli appartamenti
+     * In ordine la stanza richiede i seguenti input:
+     * nome, lunghezza, larghezza, altezza, superficie finestre ed infine,
+     * in boolean bisogna inserire se le pareti sono disperdenti, nel seguente ordine:
+     * nord, sud, est, ovest, pavimento, soffitto     
+     * ancora non ci serve la cucina quindi bisogna aggiungere "false" in coda ad ogni stanza */
     
-    Stanza A = new Stanza("Stanza1", 30, 10, 10, 10, true, false);
-    Stanza B = new Stanza("Stanza2", 20, 10, 10, 10, true, false);
+    Stanza A = new Stanza("Stanza1", 30, 10, 10, 10, true, false, true, false, false, true, false);
+    Stanza B = new Stanza("Stanza2", 20, 10, 10, 10, true, false, true, false,true,false,false);
 
     a1.addStanza(A);
     a1.addStanza(B);
