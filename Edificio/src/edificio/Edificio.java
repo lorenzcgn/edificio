@@ -91,6 +91,7 @@ public class Edificio {
                 " proprietari: "+a1.P1.getNome()+" "+a1.P1.getCognome()+", con codice fiscale: "+a1.P1.getCf());
         System.out.println("L'appartamento al piano "+a2.getNumPiano()+", con "+ a2.getNumeroStanze()+" stanze, il cui numero interno e' "+a1.getNumInterno()+" ha "+a1.getNumProp()+"\n"+
                 " proprietari: "+a2.P1.getNome()+" "+a2.P1.getCognome()+", con codice fiscale: "+a2.P1.getCf());
+        System.out.println("Ok, grazie per aver usato questo programma");
     }
     else System.out.println("Ok, grazie per aver usato questo programma");
     
