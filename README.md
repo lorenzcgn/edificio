@@ -1,4 +1,4 @@
-# Edificio in Java
+# Calcola la Dispersione Termica di un Edificio (Java)
 Programma che dato un edificio con un certo numero di piani e di stanze permette di calcolare per ogni stanza di ogni appartamento:
 * L'area
 * La superficie
