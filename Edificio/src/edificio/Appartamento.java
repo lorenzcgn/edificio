@@ -9,23 +9,27 @@ public class Appartamento {
     private int numProp;
     private int numInterno;
     private int numeroStanze;
-    private int vol;
-    private int sup;
-    private int supDisp;
-    private int supDispN;
+    public int vol;
+    public int sup;
+    public int supDisp;
+    public int supDispN;
     
     Stanza Stanze[];
     Proprietario Proprietari[];
             
-    public Appartamento(int numPiano, int numProp, int numInterno, int numeroStanze, int vol, int sup, int supDisp, int supDispN) {
+    public Appartamento(int numPiano, int numProp, int numInterno, int numeroStanze) {
     this.numPiano = numPiano;
     this.numProp = numProp;
     this.numInterno = numInterno;
     this.numeroStanze = numeroStanze;
-    this.vol=vol;
-    this.sup=sup;
-    this.supDisp=supDisp;
-    this.supDispN=supDispN;
+    this.vol=0;
+    this.sup=0;
+    this.supDisp=0;
+    this.supDispN=0;
+    
+    /* creo, nel costruttore, quindi per ogni appartamento,
+     * un array di stanze e di proprietari, in base al numero passato dal main */
+    
     Stanze = new Stanza[numeroStanze];
     Proprietari = new Proprietario[numProp];
 	}
@@ -93,10 +97,10 @@ public class Appartamento {
     public int getSupDispN() {
     	return supDispN;
     }
-        
-    Proprietario P1=new Proprietario("","","");
-    Proprietario P2=new Proprietario("","","");
     
+    /* creo un proprietario vuoto da assegnare di default ad ogni stanza prima di chiedere i dati, altrimenti non posso passarglieli */
+        
+    Proprietario P1=new Proprietario("","",""); 
     
     public void settaProprietari(int numProp) {
         for (int i=0; i<numProp; i++) {
@@ -105,9 +109,11 @@ public class Appartamento {
         for (int i=0; i<numProp; i++) {
             Proprietari[i].chiediDatiProp();
         }
-        
-    
     }
+    
+    /* metodo per aggiugere la stanza all'array di stanze dell'appartamento,
+     * che mi permette di sapere non solo i calcoli delle singole stanze, ma anche degli appartamenti,
+     * e dal main mi serviranno per calcolare i dati complessivi dell'edificio */
     
     public void addStanza(Stanza st) {
     
@@ -129,9 +135,24 @@ public class Appartamento {
         }
      }
     
+    /* metodo per l'output dei dati di tutte le stanze dell'appartamento */
+    
+    public void ouputDatiAppartamenti() {
+    	System.out.println(
+            "\n"+
+            "Di seguito ecco i dati dell'appartamento numero "+this.getNumPiano()+" con numero intero "+this.getNumInterno()+"\n"+
+    		"Volumi totali: "+this.getVol()+"\n"+
+    		"Superfici totali: "+this.getSup()+"\n"+
+    		"Superfici disperdenti lorde: "+this.getSupDisp()+"\n"+
+    		"Superfici disperdenti nette: "+this.getSupDispN()
+    );
+    }
+    
+    
+    /* chiedo i dati dell'appartamento */
     
     public void chiediDatiAppartamenti (){
-        System.out.println("Inserisci il numero del piano:");
+        System.out.println("Inserisci il numero del piano dell'appartamento:");
 	  do{
 		  this.setNumPiano(s.nextInt());
 	  }while(this.numPiano<1);
@@ -148,7 +169,8 @@ public class Appartamento {
     	
    
     
-    /* Metodo per chiedere in input i dati (al momento inusato) */
+    /* Metodo per chiedere in input i dati delle stanza (al momento inusato) */
+    
     /*
     
     public void chiediDatiStanze() {
@@ -158,21 +180,9 @@ public class Appartamento {
     
     do{
         numeroSt=s.nextInt();
-    }while(numeroSt<0 || numeroSt>7);
+    }while(numeroSt<0 || numeroSt>7);    
     }                                        */
    
-    
-    
-      
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -1,5 +1,4 @@
 
-
 package edificio;
 import java.util.*;
 
@@ -40,8 +39,10 @@ public class Proprietario {
         this.cf = cf;
     }
     
+    /* Metodo semplice per chiedere i dati del proprietario: nome, cognome e codice fiscale */
+    
     public void chiediDatiProp() {
-	  System.out.println("Inserisci il nome del proprietario:");
+	  System.out.println("Inserisci il nome:");
 	  do{
 		  this.nome=s.next();
 	  }while(this.nome.length()<2);
