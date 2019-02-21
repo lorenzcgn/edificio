@@ -11,7 +11,7 @@ public class Edificio {
 
 
     public static void main(String[] args) {
-    int numeroPiani=7;
+    int numeroPiani;
     int numProp[];
     numProp = new int[14];
     Scanner s= new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Edificio {
     }while(numeroPiani<1 || numeroPiani>2);
     
     
-    /* array di oggetti per l'intero edificio, che contiene più appartamenti, in base alla richiesta */
+    /* array di oggetti per l'intero edificio, che contiene piÃ¹ appartamenti, in base alla richiesta */
     
     Appartamento Appartamenti[]= new Appartamento[numeroPiani];
     
