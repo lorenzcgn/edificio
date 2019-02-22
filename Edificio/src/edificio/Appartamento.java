@@ -9,13 +9,15 @@ public class Appartamento {
     private int numProp;
     private int numInterno;
     private int numeroStanze;
-    public int vol;
-    public int sup;
-    public int supDisp;
-    public int supDispN;
+    public double vol;
+    public double sup;
+    public double supDisp;
+    public double supDispN;
     
     Stanza Stanze[];
     Proprietario Proprietari[];
+    
+    
             
     public Appartamento(int numPiano, int numProp, int numInterno, int numeroStanze) {
     this.numPiano = numPiano;
@@ -32,8 +34,14 @@ public class Appartamento {
     
     Stanze = new Stanza[numeroStanze];
     Proprietari = new Proprietario[numProp];
-	}
 
+    for (int i=0; i<7; i++) {
+        Stanze[i]=null;
+    }
+    
+    }
+    
+    
     public int getNumPiano() {
         return numPiano;
     }
@@ -66,35 +74,35 @@ public class Appartamento {
         this.numeroStanze = numeroStanze;
     }
     
-    public void setVol(int vol) {
+    public void setVol(double vol) {
     	this.vol=vol;
     }
     
-    public int getVol() {
+    public double getVol() {
     	return vol;
     }
     
-    public void setSup(int sup) {
+    public void setSup(double sup) {
     	this.sup=sup;
     }
     
-    public int getSup() {
+    public double getSup() {
     	return sup;
     }
     
-    public void setSupDisp(int supDisp) {
+    public void setSupDisp(double supDisp) {
     	this.supDisp=supDisp;
     }
     
-    public int getSupDisp() {
+    public double getSupDisp() {
     	return supDisp;
     }
     
-    public void setSupDispN(int supDispN) {
+    public void setSupDispN(double supDispN) {
     	this.supDispN=supDispN;
     }
     
-    public int getSupDispN() {
+    public double getSupDispN() {
     	return supDispN;
     }
     
@@ -130,7 +138,6 @@ public class Appartamento {
             		this.setSupDispN(this.getSupDispN() + Stanze[i].supDisperdenteNetta());
             		var++;
             	}
-                else i=5;
             }
         }
      }
