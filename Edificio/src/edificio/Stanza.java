@@ -4,10 +4,10 @@ import java.util.*;
 public class Stanza {   
     Scanner s = new Scanner(System.in);
     private String nome;
-    private int lun;
-    private int lar;
-    private int alt;
-    private int supFin;
+    private double lun;
+    private double lar;
+    private double alt;
+    private double supFin;
     private boolean cucina;
     private boolean est;
     private boolean ovest;
@@ -15,14 +15,14 @@ public class Stanza {
     private boolean pavimento;
     private boolean nord;
     private boolean sud;
-    private int pNord;
-    private int pSud;
-    private int pEst;
-    private int pOvest;
-    private int pPavimento;
-    private int pSoffitto;
+    private double pNord;
+    private double pSud;
+    private double pEst;
+    private double pOvest;
+    private double pPavimento;
+    private double pSoffitto;
     
-    public Stanza(String nome, int lun, int lar, int alt, int supFin, boolean nord, boolean sud, boolean est, boolean ovest, boolean pavimento, boolean soffitto, boolean cucina) {
+    public Stanza(String nome, double lun, double lar, double alt, double supFin, boolean nord, boolean sud, boolean est, boolean ovest, boolean pavimento, boolean soffitto, boolean cucina) {
     this.nome = nome;
     this.lun = lun;
     this.lar = lar;
@@ -38,16 +38,16 @@ public class Stanza {
     
     /* Inizializzo le parenti all'interno del costruttore per non doverle ricreare dentro ogni metodo */
     
-    /* Secondo il mio programma la parete nord è altezza x larghezza */
+    /* Secondo il mio programma la parete nord ï¿½ altezza x larghezza */
 	pNord = this.getAlt()*this.getLar();
 	
-	/* Secondo il mio programma la parete sud è altezza x larghezza */
+	/* Secondo il mio programma la parete sud ï¿½ altezza x larghezza */
 	pSud = this.getAlt()*this.getLar();
 
-	/* Secondo il mio programma la parete est è altezza x lunghezza */
+	/* Secondo il mio programma la parete est ï¿½ altezza x lunghezza */
 	pEst = this.getAlt()*this.getLun();
 
-	/* Secondo il mio programma la parete ovest è altezza x lunghezza */
+	/* Secondo il mio programma la parete ovest ï¿½ altezza x lunghezza */
 	pOvest = this.getAlt()*this.getLun();
 
 	pPavimento = this.getLar()*this.getLun();
@@ -55,11 +55,11 @@ public class Stanza {
     
     }
 
-    public int getAlt() {
+    public double getAlt() {
         return alt;
     }
 
-    public void setAlt(int alt) {
+    public void setAlt(double alt) {
         this.alt = alt;
     }
     
@@ -72,27 +72,27 @@ public class Stanza {
         this.nome = nome;
     }
 
-    public int getLun() {
+    public double getLun() {
         return lun;
     }
 
-    public void setLun(int lun) {
+    public void setLun(double lun) {
         this.lun = lun;
     }
 
-    public int getLar() {
+    public double getLar() {
         return lar;
     }
 
-    public void setLar(int lar) {
+    public void setLar(double lar) {
         this.lar = lar;
     }
 
-    public int getSupFin() {
+    public double getSupFin() {
         return supFin;
     }
 
-    public void setSupFin(int supFin) {
+    public void setSupFin(double supFin) {
         this.supFin = supFin;
     }
     
@@ -154,16 +154,16 @@ public class Stanza {
 	
 	
 	/* metodo per calcolare il volume della stanza */
-	public int calcolaVolume() {
+	public double calcolaVolume() {
         System.out.println("Il volume della stanza "+nome+" e': "+(this.lun*this.lar*this.alt));
-        int volume=this.lun*this.lar*this.alt;
+        double volume=this.lun*this.lar*this.alt;
         return volume;
     }
     
 	/* metodo per calcolare la superficie totale */
-    public int calcolaSupTot() {
+    public double calcolaSupTot() {
     	
-    	int suptot=pPavimento+pSoffitto+pNord+pSud+pEst+pOvest;
+    	double suptot=pPavimento+pSoffitto+pNord+pSud+pEst+pOvest;
         System.out.println("La superficie totale della stanza "+nome+" e': "+suptot);
         return suptot;
     }
@@ -196,8 +196,8 @@ public class Stanza {
     
     
     /* metodo per calcolare la superficie disperdente netta (senza finestre) */
-    public int supDisperdenteNetta() {
-    	int supdispnetta=0;
+    public double supDisperdenteNetta() {
+    	double supdispnetta=0;
         
         if (this.isEst()==true) {
         	supdispnetta+=pEst;
@@ -222,6 +222,7 @@ public class Stanza {
         if (supdispnetta<0) {
         	supdispnetta=0;
         }
+        System.out.println("La superficie disperdente netta della stanza "+this.nome+" e': "+supdispnetta);
         return supdispnetta;    
     }
 
