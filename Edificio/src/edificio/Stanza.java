@@ -22,7 +22,7 @@ public class Stanza {
     private double pPavimento;
     private double pSoffitto;
     
-    public Stanza(String nome, double lun, double lar, double alt, double supFin, boolean nord, boolean sud, boolean est, boolean ovest, boolean pavimento, boolean soffitto, boolean cucina) {
+    public Stanza(String nome, double lun, double lar, double alt, double supFin, boolean est, boolean nord, boolean ovest, boolean sud, boolean soffitto, boolean pavimento, boolean cucina) {
     this.nome = nome;
     this.lun = lun;
     this.lar = lar;
@@ -36,25 +36,24 @@ public class Stanza {
     this.soffitto=soffitto;
     this.cucina = cucina;
     
-    /* Inizializzo le parenti all'interno del costruttore per non doverle ricreare dentro ogni metodo */
-    
-    /* Secondo il mio programma la parete nord � altezza x larghezza */
-	pNord = this.getAlt()*this.getLar();
+    /* Secondo il mio programma la parete nord e' altezza x larghezza */
+	pNord = alt*lar;
 	
-	/* Secondo il mio programma la parete sud � altezza x larghezza */
-	pSud = this.getAlt()*this.getLar();
+	
+	/* Secondo il mio programma la parete sud e' altezza x larghezza */
+	pSud = alt*lar;
 
-	/* Secondo il mio programma la parete est � altezza x lunghezza */
-	pEst = this.getAlt()*this.getLun();
+	/* Secondo il mio programma la parete est e' altezza x lunghezza */
+	pEst = alt*lun;
 
-	/* Secondo il mio programma la parete ovest � altezza x lunghezza */
-	pOvest = this.getAlt()*this.getLun();
+	/* Secondo il mio programma la parete ovest e' altezza x lunghezza */
+	pOvest = alt*lun;
 
-	pPavimento = this.getLar()*this.getLun();
-	pSoffitto = this.getLar()*this.getLun();
+	pPavimento = lar*lun;
+	pSoffitto = lar*lun;
     
     }
-
+    
     public double getAlt() {
         return alt;
     }
@@ -151,44 +150,93 @@ public class Stanza {
 	public void setSud(boolean sud) {
 		this.sud = sud;
 	}
+
 	
-	
+	public double getpNord() {
+		return pNord;
+	}
+
+	public void setpNord(double pNord) {
+		this.pNord = pNord;
+	}
+
+	public double getpSud() {
+		return pSud;
+	}
+
+	public void setpSud(double pSud) {
+		this.pSud = pSud;
+	}
+
+	public double getpEst() {
+		return pEst;
+	}
+
+	public void setpEst(double pEst) {
+		this.pEst = pEst;
+	}
+
+	public double getpOvest() {
+		return pOvest;
+	}
+
+	public void setpOvest(double pOvest) {
+		this.pOvest = pOvest;
+	}
+
+	public double getpPavimento() {
+		return pPavimento;
+	}
+
+	public void setpPavimento(double pPavimento) {
+		this.pPavimento = pPavimento;
+	}
+
+	public double getpSoffitto() {
+		return pSoffitto;
+	}
+
+	public void setpSoffitto(double pSoffitto) {
+		this.pSoffitto = pSoffitto;
+	}
+
 	/* metodo per calcolare il volume della stanza */
 	public double calcolaVolume() {
         System.out.println("Il volume della stanza "+nome+" e': "+(this.lun*this.lar*this.alt));
         double volume=this.lun*this.lar*this.alt;
         return volume;
     }
+	
     
 	/* metodo per calcolare la superficie totale */
     public double calcolaSupTot() {
     	
-    	double suptot=pPavimento+pSoffitto+pNord+pSud+pEst+pOvest;
+    	double suptot=this.getpPavimento()+this.getpSoffitto()+this.getpSud()+this.getpNord()+this.getpEst()+this.getpOvest();
         System.out.println("La superficie totale della stanza "+nome+" e': "+suptot);
         return suptot;
     }
     
     /* metodo per calcolare la superficie disperdente lorda (con finestre) */
-    public int supDisperdenteLorda() {
-        int supdisp=0;
+    public double supDisperdenteLorda() {
+        double supdisp=0.0;
         
         if (this.isEst()==true) {
-        	supdisp+=pEst;
+        	supdisp+=this.getpEst();
         }
-        else if (this.isOvest()==true) {
-        	supdisp+=pOvest;
+        if (this.isOvest()==true) {
+        	supdisp+=this.getpOvest();
         }
-        else if (this.isNord()==true) {
-        	supdisp+=pNord;
+        if (this.isNord()==true) {
+        	supdisp+=this.getpNord();
         }
-        else if (this.isSud()==true) {
-        	supdisp+=pSud;
+        if (this.isSud()==true) {
+        	supdisp+=this.getpSud();
         }
-        else if (this.isPavimento()==true) {
-        	supdisp+=pPavimento;
+        if (this.isPavimento()==true) {
+        	supdisp+=this.getpPavimento();
         }
-        else if (this.isSoffitto()==true) {
-        	supdisp+=pSoffitto;
+        if (this.isSoffitto()==true) {
+        	supdisp+=this.getpSoffitto();
         }
         System.out.println("La superficie disperdente lorda della stanza "+this.nome+" e': "+supdisp);
         return supdisp;
@@ -197,28 +245,28 @@ public class Stanza {
     
     /* metodo per calcolare la superficie disperdente netta (senza finestre) */
     public double supDisperdenteNetta() {
-    	double supdispnetta=0;
+    	double supdispnetta=0.0;
         
-        if (this.isEst()==true) {
-        	supdispnetta+=pEst;
+    	if (this.isEst()==true) {
+    		supdispnetta+=this.getpEst();
         }
-        else if (this.isOvest()==true) {
-        	supdispnetta+=pOvest;
+        if (this.isOvest()==true) {
+        	supdispnetta+=this.getpOvest();
         }
-        else if (this.isNord()==true) {
-        	supdispnetta+=pNord;
+        if (this.isNord()==true) {
+        	supdispnetta+=this.getpNord();
         }
-        else if (this.isSud()==true) {
-        	supdispnetta+=pSud;
+        if (this.isSud()==true) {
+        	supdispnetta+=this.getpSud();
         }
-        else if (this.isPavimento()==true) {
-        	supdispnetta+=pPavimento;
+        if (this.isPavimento()==true) {
+        	supdispnetta+=this.getpPavimento();
         }
-        else if (this.isSoffitto()==true) {
-        	supdispnetta+=pSoffitto;
+        if (this.isSoffitto()==true) {
+        	supdispnetta+=this.getpSoffitto();
         }
         
-        supdispnetta=supdispnetta-this.supFin;
+        supdispnetta=supdispnetta-this.getSupFin();
         if (supdispnetta<0) {
         	supdispnetta=0;
         }
