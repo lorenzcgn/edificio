@@ -23,7 +23,7 @@ public class Appartamento {
     this.numPiano = numPiano;
     this.numProp = numProp;
     this.numInterno = numInterno;
-    this.numeroStanze = numeroStanze;
+    this.numeroStanze=numeroStanze;
     this.vol=0;
     this.sup=0;
     this.supDisp=0;
@@ -35,7 +35,7 @@ public class Appartamento {
     Stanze = new Stanza[numeroStanze];
     Proprietari = new Proprietario[numProp];
 
-    for (int i=0; i<7; i++) {
+    for (int i=0; i<numeroStanze; i++) {
         Stanze[i]=null;
     }
     
@@ -110,7 +110,7 @@ public class Appartamento {
         
     Proprietario P1=new Proprietario("","",""); 
     
-    public void settaProprietari(int numProp) {
+    public void settaProprietari() {
         for (int i=0; i<numProp; i++) {
             Proprietari[i]=P1;
         }
@@ -126,7 +126,7 @@ public class Appartamento {
     public void addStanza(Stanza st) {
     
     	int var=0;
-        for (int i=0; i<6; i++) {
+        for (int i=0; i<(numeroStanze); i++) {
             if (Stanze[i]==null){
             	if (var==0) {
             		Stanze[i]=st;
@@ -147,7 +147,7 @@ public class Appartamento {
     public void ouputDatiAppartamenti() {
     	System.out.println(
             "\n"+
-            "Di seguito ecco i dati dell'appartamento numero "+this.getNumPiano()+" con numero intero "+this.getNumInterno()+"\n"+
+            "Di seguito ecco i dati dell'appartamento al piano "+this.getNumPiano()+" con numero intero "+this.getNumInterno()+"\n"+
     		"Volumi totali: "+this.getVol()+"\n"+
     		"Superfici totali: "+this.getSup()+"\n"+
     		"Superfici disperdenti lorde: "+this.getSupDisp()+"\n"+
