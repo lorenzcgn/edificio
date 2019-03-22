@@ -29,7 +29,8 @@ public class Edificio {
     Appartamento Appartamenti[]= new Appartamento[numeroApp];
     
     
-    for (int i=0;i<numeroApp;i++) {
+    
+    /*for (int i=0;i<numeroApp;i++) {
     System.out.println("Inserisci il numero dei proprietari (max 2) dell'appartamento "+(i+1));
     do{
         numProp[i]=s.nextInt();
@@ -55,6 +56,8 @@ public class Edificio {
     Appartamenti[3]=a3;
     Appartamenti[4]=a4;
     Appartamenti[5]=a5;
+    
+   
     
     
     /* chiedo i dati dei proprietari */
@@ -120,7 +123,10 @@ public class Edificio {
         a4.ouputDatiAppartamenti();
         a5.ouputDatiAppartamenti();
     }
-
+    
+    /* implementazione affittuari */
+    gestioneAffitti affPasqua=new gestioneAffitti("a0",12, a0.getSupDispN(), a0.getSupDisp());
+    affPasqua.calcolaCosti();
     
     /* calcoli totali dell'edificio */
     
